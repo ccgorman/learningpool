@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Course;
+namespace App\Http\Resources\User;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CourseList extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,9 +15,11 @@ class CourseList extends JsonResource
     public function toArray($request)
     {
         return [
-            'title' => $this->title,
+            'name' => $this->title,
+            'email' => $this->email,
+            'courses' => $this->usercourse->count(),
             'href' => [
-                'contents' => route('courses.show', $this->id)
+                'contents' => route('courselist.index', $this->id)
             ]
         ];
     }

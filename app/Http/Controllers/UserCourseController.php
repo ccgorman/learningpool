@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\User;
 use App\Model\UserCourse;
 use Illuminate\Http\Request;
+use App\Http\Resources\User\UserCourseResource;
 
 class UserCourseController extends Controller
 {
@@ -12,9 +14,9 @@ class UserCourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        //
+        return new UserCourseResource($user);
     }
 
     /**

@@ -10,3 +10,8 @@ Route::apiResource('/courses', 'CourseController');
 Route::group(['prefix'=>'courses'], function() {
     Route::apiResource('/{course}/contents', 'CourseContentController');
 });
+
+Route::apiResource('/users', 'UserController');
+Route::group(['prefix'=>'users'], function() {
+    Route::apiResource('/{user}/courselist', 'UserCourseController');
+});

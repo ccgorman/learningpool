@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\CourseContent;
 use Illuminate\Http\Request;
+use App\Model\Course;
+use App\Http\Resources\CourseContentResource;
 
 class CourseContentController extends Controller
 {
@@ -12,9 +14,9 @@ class CourseContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Course $course)
     {
-        //
+        return CourseContentResource::collection($course->coursecontents);
     }
 
     /**

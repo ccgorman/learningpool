@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Course;
 use Illuminate\Http\Request;
+use App\Http\Resources\Course\CourseList;
+use App\Http\Resources\Course\CourseResource;
 
 class CourseController extends Controller
 {
@@ -14,7 +16,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        return CourseList::collection(Course::all());
     }
 
     /**
@@ -46,7 +48,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return new CourseResource($course);
     }
 
     /**

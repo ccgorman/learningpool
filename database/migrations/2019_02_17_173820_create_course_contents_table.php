@@ -15,6 +15,11 @@ class CreateCourseContentsTable extends Migration
     {
         Schema::create('course_contents', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('course_id')->unsigned()->index();
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('position');
+            $table->string('section');
+            $table->text('content');
             $table->timestamps();
         });
     }

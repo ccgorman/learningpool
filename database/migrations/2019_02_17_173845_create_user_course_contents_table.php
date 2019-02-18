@@ -14,7 +14,10 @@ class CreateUserCourseContentsTable extends Migration
     public function up()
     {
         Schema::create('user_course_contents', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('course_content_id')->unsigned()->index();
+            $table->foreign('course_content_id')->references('id')->on('course_contents')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

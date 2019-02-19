@@ -15,7 +15,9 @@ class CourseList extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
+            'users' => $this->usercourses->count(),
             'href' => [
                 'contents' => route('courses.show', $this->id)
             ]
